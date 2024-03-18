@@ -1,3 +1,4 @@
+require('dotenv').config();
 /*const config = {
     type: "carousel",
     gap: 15, // add a 15px gap between slides
@@ -34,6 +35,7 @@ const xrsCardContainer = document.querySelector("[data-xrs-container]");
 const xrsPageTemplate = document.querySelector("[data-xrs-page]");
 const xrsPageContainer = document.querySelector("[data-xrs-page-container]");
 let xrs = []
+const apiKeyGoogle = process.env.API_KEY;
 
 // checkBox.addEventListener("change", (e)=>{
 //   function isNewYork (address) {
@@ -103,7 +105,7 @@ if(searchParams.has('id') == true){
               const mapAddress = document.createElement("p")
               const  directionBtn = document.createElement("span")
               mapComponent.appendChild(googleMap)
-              googleMap.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + xr.map +"&zoom=18&size=400x400&markers=icon:https://lc4726.itp.io/qr/assets/foundARmap.png"+ "%7C"+ xr.map +"&key=AIzaSyCAirwcBgqDzPj6DlLDNzWvF-DPlcjsXfE"
+              googleMap.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + xr.map +"&zoom=18&size=400x400&markers=icon:https://lc4726.itp.io/qr/assets/foundARmap.png"+ "%7C"+ xr.map +"&key="+apiKeyGoogle;
               googleMap.classList.add("mapScale");
               mapAddress.innerHTML = `${xr.address}`;
               mapAddress.classList.add("mapAddressp");
@@ -412,7 +414,7 @@ if(searchParams.has('id') == true){
             console.log(flexMapModule)
             if(xr.map !== "NA"){
               mapModule.innerHTML = `
-              <img class="mapScale" src="https://maps.googleapis.com/maps/api/staticmap?center=${xr.map}&zoom=18&size=200x200&markers=icon:https://lc4726.itp.io/qr/assets/foundARmap.png%7C${xr.map}&key=AIzaSyCAirwcBgqDzPj6DlLDNzWvF-DPlcjsXfE">
+              <img class="mapScale" src="https://maps.googleapis.com/maps/api/staticmap?center=${xr.map}&zoom=18&size=200x200&markers=icon:https://lc4726.itp.io/qr/assets/foundARmap.png%7C${xr.map}&key="+apiKeyGoogle>
               <p class="mapAddressp">${xr.address}</p>
               `
             }else{
